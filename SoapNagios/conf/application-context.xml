@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="server" class="uk.co.mccnet.simplenrpe.NRPEServer">
+        <property name="sslEnabled" value="true"/> 
+    </bean>
+
+    <bean id="commandFactory" class="uk.co.mccnet.simplenrpe.handlers.command.CommandFactory">
+        <property name="commands">
+        	<map>
+        	    <entry key="check_soapuinagios_iosfps">
+        	        <bean class="uk.co.mccnet.soapNagios.SoapNagiosCommand">
+        	            <constructor-arg name="projectFilename" value="D:\\project.xml"/>
+        	        </bean>
+        	    </entry>
+        	</map>
+        </property>
+    </bean>
+</beans>
